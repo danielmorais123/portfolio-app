@@ -38,10 +38,10 @@ export default function Project() {
             alt=""
             className="max-h-[400px] object-contain "
           />
-          <div className="border flex flex-col p-2 rounded-md dark:border-zinc-600 max-w-[300px] gap-2">
+          <div className="border flex flex-col p-2 rounded-md dark:border-zinc-600 max-w-[300px] gap-2 bg-zinc-100 dark:bg-transparent">
             <p>{proj.title}</p>
-            <p className="text-xs text-zinc-200">{proj?.subTitle}</p>
-            <p className="text-sm text-zinc-300">{proj?.description}</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-300">{proj?.subTitle}</p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-300">{proj?.description}</p>
           </div>
         </div>
       ))}
@@ -57,17 +57,18 @@ export default function Project() {
           className="max-h-[400px] object-contain "
         />
         <div className="flex flex-col justify-between h-full gap-2">
-          <div className="border flex flex-col p-2 rounded-md dark:border-zinc-600 max-w-[300px] gap-2">
+          <div className="border flex flex-col p-2 rounded-md dark:border-zinc-600 max-w-[300px] gap-2 bg-zinc-100 dark:bg-transparent">
             <p>{projects.at(0)?.title}</p>
-            <p className="text-xs text-zinc-200">{projects.at(0)?.subTitle}</p>
-            <p className="text-sm text-zinc-300">
+            <p className="text-xs text-zinc-500 dark:text-zinc-300">{projects.at(0)?.subTitle}</p>
+            <p className="text-sm text-zinc-600 dark:text-zinc-300">
               {projects.at(0)?.description}
             </p>
           </div>
 
-          <div className="border flex flex-col p-2 rounded-md dark:border-zinc-600 max-w-[300px] gap-2">
+          <div className="border flex flex-col p-2 rounded-md dark:border-zinc-600 max-w-[300px] gap-2 bg-zinc-100 dark:bg-transparent">
             <p>{projects.at(1)?.title}</p>
-            <p className="text-sm text-zinc-300">
+            <p className="text-xs text-zinc-500 dark:text-zinc-300">{projects.at(1)?.subTitle}</p>
+            <p className="text-sm text-zinc-600 dark:text-zinc-300">
               {projects.at(1)?.description}
             </p>
           </div>
