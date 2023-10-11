@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import TextInputWithIcon from "./TextInputWithIcon";
-import { HiCurrencyDollar, HiMail, HiPhone, HiUser } from "react-icons/hi";
+import { HiCurrencyDollar, HiMail, HiPhone, HiQuestionMarkCircle, HiUser } from "react-icons/hi";
 import ContactMethod from "./ContactMethod";
 import {
   faEnvelope,
@@ -13,39 +13,64 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TextArea from "./TextArea";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { sendContactUs } from "../actions";
+import { Spinner } from "flowbite-react";
 
 export default function ContactUs() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [budget, setBudget] = useState(0);
+  const [subject, setSubject] = useState("");
+
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [phone, setPhone] = useState("");
+
+  function clearInputs() {
+    setEmail("");
+    setName("");
+    setSubject("");
+    setPhone("");
+    setMessage("");
+  }
   return (
-    <div className="">
-      <div className="flex flex-col gap-2 lg:items-center">
-        <p className="font-bold text-2xl lg:text-4xl">
+    <div
+      className="min-h-[50vh] flex flex-col justify-center my-4"
+      id="contactus"
+    >
+      <div className="flex flex-col gap-4 lg:items-center">
+        <p className="font-bold text-2xl lg:text-[40px] tracking-wide">
           Let's Discuss Your <span className="text-[#6C63FF]">Project</span>{" "}
         </p>
-        <p className="text-sm lg:max-w-[400px] lg:text-center">
+        <p className="text-sm lg:text-md lg:max-w-[400px] lg:text-center">
           {" "}
           Let's make something new, different and more meaningful or make thing
           more visual or conceptual
         </p>
       </div>
       <div className="flex mt-4 lg:flex-row-reverse flex-col lg:justify-between lg:gap-5 relative">
-        <form className="mt-4 flex flex-col gap-2 w-full">
+        <form
+          action={async (e) => {
+            setLoading(true);
+            await sendContactUs(e);
+            setTimeout(() => {
+              clearInputs();
+              setLoading(false);
+            }, 1000);
+          }}
+          className="mt-5 flex flex-col gap-2 w-full"
+        >
           <div className=" flex sm:flex-row flex-col w-full gap-2">
             <div className="w-full flex flex-col gap-2">
               <TextInputWithIcon
                 placeholder="Email"
-                id="email"
+                id="from"
                 type="email"
                 setValue={setEmail}
                 value={email}
                 icon={HiMail}
               />
               <TextInputWithIcon
-                placeholder="Phone Number"
+                placeholder="Phone"
                 id="phone"
                 type=""
                 setValue={setPhone}
@@ -58,18 +83,19 @@ export default function ContactUs() {
               <TextInputWithIcon
                 placeholder="Name"
                 id="name"
+                name="name"
                 type=""
                 setValue={setName}
                 value={name}
                 icon={HiUser}
               />
               <TextInputWithIcon
-                placeholder="Budget"
-                id="budget"
-                type="number"
-                setValue={setBudget}
-                value={budget}
-                icon={HiCurrencyDollar}
+                placeholder="Subject"
+                id="subject"
+                type=""
+                setValue={setSubject}
+                value={subject}
+                icon={HiQuestionMarkCircle}
               />
             </div>
           </div>
@@ -78,8 +104,11 @@ export default function ContactUs() {
           </div>
           <div className="flex justify-end">
             {" "}
-            <button className="bg-[#6C63FF] text-sm py-2.5 px-6 rounded-md text-white">
-              Submit message
+            <button
+              type="submit"
+              className="bg-[#6C63FF] text-sm py-2.5 px-6 rounded-md text-white"
+            >
+              {loading ? <Spinner /> : "Submit message"}
             </button>
           </div>
         </form>

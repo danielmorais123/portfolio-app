@@ -15,6 +15,7 @@ export default function TextInputWithIcon({
       <TextInput
         icon={icon}
         id={id}
+        name={id}
         placeholder={placeholder}
         required
         type={type}
