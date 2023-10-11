@@ -23,10 +23,10 @@ export default function Navbar() {
             <a href="#skills">Skills</a>
           </li>
           <li className="cursor-pointer font-semibold tracking-wider">
-            Portfolio
+          <a href="#portfolio">Portfolio</a>  
           </li>
           <li className="cursor-pointer font-semibold tracking-wider">
-            <a href="#reviews">Testimonials</a>
+            <a href="#contactus">Contact Us</a>
           </li>
         </ul>
       </div>

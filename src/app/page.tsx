@@ -51,7 +51,7 @@ export default function Home() {
           </div>
           <Projects />
         </div>
-        <Reviews />
+        {/* <Reviews /> */}
         <ContactUs />
         <hr className="mt-4 lg:mt-0" />
         <Footer />
