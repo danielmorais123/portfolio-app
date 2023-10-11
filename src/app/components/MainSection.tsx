@@ -1,11 +1,25 @@
+"use client";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import danielpng from "../img/undraw_tabs_re_a2bd.svg";
 import CardReview from "./CardReview";
 import HireMe from "./HireMe";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+
 export default function MainSection() {
   return (
     <div>
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between h-[50vh]">
-        <div className="lg:max-w-[450px]">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between min-h-[38vh] overflow-hidden">
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            ease: "linear",
+            duration: 1,
+          }}
+          className="lg:max-w-[450px]"
+        >
           <p className="text-[50px] font-bold  tracking-wider">
             I am a <span className="text-[#6C63FF]">Full Stack Developer</span>
           </p>
@@ -14,30 +28,53 @@ export default function MainSection() {
             almost 1 year in Software Engineer.
           </p>
           <div className="mt-4 flex items-center gap-2">
-            <button className="bg-[#6C63FF] hover:bg-[#6C63FF]/80 transition text-sm py-2.5 px-6 rounded-md text-white">
+            <a
+              href="#contactus"
+              className="bg-[#6C63FF] hover:bg-[#6C63FF]/80 transition text-sm py-2.5 px-6 rounded-md text-white"
+            >
               Contact Me
-            </button>
-            <a href="" className="text-sm hover:underline">
-              View Portfolio
+            </a>
+            <a href="" className="text-sm hover:underline group cursor-pointer">
+              View Portfolio{" "}
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="group-hover:inline-flex hidden transition"
+              />
             </a>
           </div>
-        </div>
-        <div className="flex justify-center">
+        </motion.div>
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            ease: "linear",
+            duration: 1,
+          }}
+          className="flex justify-center"
+        >
           <img
             src={danielpng.src}
             alt=""
-            className="max-h-[300px] object-contain"
+            className="sm:max-h-[300px] !w-[90%] object-contain"
           />
-        </div>
+        </motion.div>
       </div>
-      <div className="h-[40vh]">
-        <div className="flex items-center gap-3 ">
-          <CardReview title="10+" subTitle="Projects Github" />
-          <hr className="h-[100px] border-[#6C63FF] border" />
+      <div className="min-h-[40vh] my-4">
+        <motion.div
+          initial={{ x: 100, y: 100, opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{
+            ease: "linear",
+            duration: 1,
+          }}
+          className="flex flex-col sm:flex-row items-center gap-3 "
+        >
+          <CardReview title="30+" subTitle="Projects Github" />
+          <hr className="sm:h-[100px] sm:w-0 w-1/2 mx-auto border-[#6C63FF] sm:border" />
           <CardReview title="2+" subTitle="Portfolios" />
-          <hr className="h-[100px] border-[#6C63FF] border" />
+          <hr className="sm:h-[100px] w-1/2 mx-auto sm:w-0  border-[#6C63FF] sm:border" />
           <CardReview title="10+" subTitle="Projects Github" />
-        </div>
+        </motion.div>
         <div>
           <HireMe />
         </div>

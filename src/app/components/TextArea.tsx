@@ -6,7 +6,8 @@ export default function TextArea({ value, setValue }: any) {
   return (
     <div className="" id="textarea">
       <TextAreaFlowbite
-        id="comment"
+        id="message"
+        name="message"
         placeholder="Message"
         required
         rows={4}
