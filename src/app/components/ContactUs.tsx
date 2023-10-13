@@ -2,7 +2,13 @@
 
 import React, { useState } from "react";
 import TextInputWithIcon from "./TextInputWithIcon";
-import { HiCurrencyDollar, HiMail, HiPhone, HiQuestionMarkCircle, HiUser } from "react-icons/hi";
+import {
+  HiCurrencyDollar,
+  HiMail,
+  HiPhone,
+  HiQuestionMarkCircle,
+  HiUser,
+} from "react-icons/hi";
 import ContactMethod from "./ContactMethod";
 import {
   faEnvelope,
@@ -15,6 +21,7 @@ import TextArea from "./TextArea";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { sendContactUs } from "../actions";
 import { Spinner } from "flowbite-react";
+import { useToast } from "@chakra-ui/react";
 
 export default function ContactUs() {
   const [email, setEmail] = useState("");
@@ -24,7 +31,7 @@ export default function ContactUs() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const [phone, setPhone] = useState("");
-
+  const toast = useToast();
   function clearInputs() {
     setEmail("");
     setName("");
@@ -55,6 +62,14 @@ export default function ContactUs() {
             setTimeout(() => {
               clearInputs();
               setLoading(false);
+              toast({
+                title: "Email sent.",
+                description:
+                  "We've sent an email for Daniel, he'll analyse and answer your email.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+              });
             }, 1000);
           }}
           className="mt-5 flex flex-col gap-2 w-full"

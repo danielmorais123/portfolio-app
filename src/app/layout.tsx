@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
-
+import { ChakraProvider } from "@chakra-ui/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,10 +21,12 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-zinc-300 dark:!bg-[#272729] dark:text-white text-[#272729]`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-          <ThemeSwitcher />
-        </ThemeProvider>
+        <ChakraProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+            <ThemeSwitcher />
+          </ThemeProvider>
+        </ChakraProvider>
       </body>
     </html>
   );
