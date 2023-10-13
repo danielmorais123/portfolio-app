@@ -34,7 +34,7 @@ export default function MainSection() {
             >
               Contact Me
             </a>
-            <a href="" className="text-sm hover:underline group cursor-pointer">
+            <a href="https://github.com/danielmorais123" target="_blank" className="text-sm hover:underline group cursor-pointer">
               View Portfolio{" "}
               <FontAwesomeIcon
                 icon={faArrowRight}
@@ -73,7 +73,7 @@ export default function MainSection() {
           <hr className="sm:h-[100px] sm:w-0 w-1/2 mx-auto border-[#6C63FF] sm:border" />
           <CardReview title="2+" subTitle="Portfolios" />
           <hr className="sm:h-[100px] w-1/2 mx-auto sm:w-0  border-[#6C63FF] sm:border" />
-          <CardReview title="10+" subTitle="Projects Github" />
+          <CardReview title="7+" subTitle="Language Master" />
         </motion.div>
         <div>
           <HireMe />
